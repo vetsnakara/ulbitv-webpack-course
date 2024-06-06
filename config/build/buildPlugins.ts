@@ -1,8 +1,8 @@
-import { ProgressPlugin } from "webpack";
+import { Configuration, ProgressPlugin } from "webpack";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
-import type { Configuration } from "webpack";
 import type { BuildOptions } from "./types/types";
 
 type BuildPlugins = Configuration["plugins"];
@@ -11,6 +11,7 @@ export function buildPlugins({
     paths,
     isDev,
     isProd,
+    analyze,
 }: BuildOptions): BuildPlugins {
     const htmlPlugin = new HtmlWebpackPlugin({
         template: paths.html,
@@ -20,7 +21,6 @@ export function buildPlugins({
 
     if (isDev) {
         const progressPlugin = new ProgressPlugin();
-
         plugins.push(progressPlugin);
     }
 
@@ -31,6 +31,11 @@ export function buildPlugins({
         });
 
         plugins.push(miniCssExtractPlugin);
+
+        if (analyze) {
+            const bundleAnalyzer = new BundleAnalyzerPlugin();
+            plugins.push(bundleAnalyzer);
+        }
     }
 
     return plugins;

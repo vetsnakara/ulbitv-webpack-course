@@ -3,7 +3,7 @@ import path from "path";
 import { buildWebpack } from "./config/build/buildWebpack";
 import type { BuildOptions, EnvVariables } from "./config/build/types/types";
 
-export default ({ mode, port }: EnvVariables) => {
+export default ({ mode, port, analyze = false }: EnvVariables) => {
     const paths = {
         entry: path.resolve(__dirname, "src", "index.tsx"),
         output: path.resolve(__dirname, "build"),
@@ -17,6 +17,7 @@ export default ({ mode, port }: EnvVariables) => {
         mode: mode ?? "development",
         port: port ?? 3000,
         paths,
+        analyze,
         isDev,
         isProd,
     };

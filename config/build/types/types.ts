@@ -9,6 +9,7 @@ type BuildMode = "production" | "development";
 export interface EnvVariables {
     mode: BuildMode;
     port: number;
+    analyze?: boolean;
 }
 
 export interface BuildOptions {
@@ -17,4 +18,5 @@ export interface BuildOptions {
     mode: BuildMode;
     isDev: boolean;
     isProd: boolean;
+    analyze?: boolean;
 }
