@@ -1,4 +1,5 @@
 interface BuildPaths {
+    src: string;
     entry: string;
     html: string;
     output: string;

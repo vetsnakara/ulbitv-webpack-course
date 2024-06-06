@@ -5,6 +5,7 @@ import type { BuildOptions, EnvVariables } from "./config/build/types/types";
 
 export default ({ mode, port, analyze = false }: EnvVariables) => {
     const paths = {
+        src: path.resolve(__dirname, "src"),
         entry: path.resolve(__dirname, "src", "index.tsx"),
         output: path.resolve(__dirname, "build"),
         html: path.resolve(__dirname, "public", "index.html"),
