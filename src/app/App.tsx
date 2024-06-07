@@ -11,7 +11,7 @@ export const App = () => {
     const [count, setCount] = useState(0);
 
     return (
-        <div>
+        <div data-testid="App">
             {__PLATFORM__ === "desktop" && <h1>PLATFORM: 💻</h1>}
             {__PLATFORM__ === "mobile" && <h1>PLATFORM: 📲</h1>}
 
@@ -21,7 +21,7 @@ export const App = () => {
             <img width={100} height={100} src={avatarPng} />
             <img width={100} height={100} src={avatarJpg} />
 
-            <div>
+            <div data-testid="Images">
                 <AppImage width={100} height={100} fill="green" />
                 <AppImage width={100} height={100} color="red" />
                 <AppImage width={100} height={100} style={{ color: "blue" }} />
