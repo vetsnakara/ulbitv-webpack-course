@@ -9,10 +9,11 @@ export default ({
     port = 3000,
     analyze = false,
 }: EnvVariables) => {
-    const paths = {
+    const paths: BuildOptions["paths"] = {
         src: path.resolve(__dirname, "src"),
         entry: path.resolve(__dirname, "src", "index.tsx"),
         output: path.resolve(__dirname, "build"),
+        public: path.resolve(__dirname, "public"),
         html: path.resolve(__dirname, "public", "index.html"),
     };
 
