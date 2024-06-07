@@ -7,10 +7,13 @@ interface BuildPaths {
 
 type BuildMode = "production" | "development";
 
+export type BuildPlatform = "modile" | "desktop";
+
 export interface EnvVariables {
-    mode: BuildMode;
-    port: number;
+    mode?: BuildMode;
+    port?: number;
     analyze?: boolean;
+    platform?: BuildPlatform;
 }
 
 export interface BuildOptions {
@@ -19,5 +22,6 @@ export interface BuildOptions {
     mode: BuildMode;
     isDev: boolean;
     isProd: boolean;
-    analyze?: boolean;
+    analyze: boolean;
+    platform: BuildPlatform;
 }

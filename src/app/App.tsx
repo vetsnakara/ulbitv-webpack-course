@@ -12,12 +12,18 @@ export const App = () => {
 
     return (
         <div>
+            {__PLATFORM__ === "desktop" && <h1>PLATFORM: 💻</h1>}
+            {__PLATFORM__ === "mobile" && <h1>PLATFORM: 📲</h1>}
+
+            {__ENV__ === "development" && <h1>ENV: 🔄</h1>}
+            {__ENV__ === "production" && <h1>ENV: ✅</h1>}
+
             <img width={100} height={100} src={avatarPng} />
             <img width={100} height={100} src={avatarJpg} />
 
             <div>
-                <AppImage width={100} height={100} fill="red" />
-                <AppImage width={100} height={100} color="orange" />
+                <AppImage width={100} height={100} fill="green" />
+                <AppImage width={100} height={100} color="red" />
                 <AppImage width={100} height={100} style={{ color: "blue" }} />
                 <AppImage width={100} height={100} className={classes.icon} />
             </div>
