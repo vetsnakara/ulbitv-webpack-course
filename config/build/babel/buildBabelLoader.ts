@@ -1,6 +1,22 @@
 import { BuildOptions } from "../types/types";
+import { removeDataTestIdBabelPlugin } from "./removeDataTestIdBabelPlugin";
 
-export function buildBabelLoader({ isDev }: BuildOptions) {
+export function buildBabelLoader({ isDev, isProd }: BuildOptions) {
+    const plugins = [];
+
+    if (isDev) {
+        plugins.push(require.resolve("react-refresh/babel"));
+    }
+
+    if (isProd) {
+        plugins.push([
+            removeDataTestIdBabelPlugin,
+            {
+                props: ["data-testid"],
+            },
+        ]);
+    }
+
     return {
         test: /\.tsx?$/,
         exclude: /node_modules/,
@@ -17,9 +33,7 @@ export function buildBabelLoader({ isDev }: BuildOptions) {
                         },
                     ],
                 ],
-                plugins: [
-                    isDev && require.resolve("react-refresh/babel"),
-                ].filter(Boolean),
+                plugins,
             },
         },
     };
